@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vw;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 5em;
+        }
+        
+        article + article {
+            margin-top: 2em;
+        }
+
+        label {
+            margin: 1em;
+        }
+
+        input {
+            margin-left: 1em;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>28.06.19</h1>
+            <small>Roman Paradeev</small>
+        </header>
+    </main>
+    <script>
+        const grades = [0, 1, 2, 3, 4, 5]
+        const faces = [': [', ': (', ': |', ': |', ': )', ': ]']
+        const questions = [
+            'General',
+            'Productivity',
+        ]
+
+        const answerHTML = ({question, grade, face }) => 
+            `<label>${face}<input type="radio" name=${question} value=${grade}"></label>`
+        const answersHTML = ({question, grades, faces }) => 
+            `<span>${grades.map((grade, i) => answerHTML({ question, grade, face: faces[i] })).join('')}</span>`
+        const questionHTML = ({ question, grades, faces }) =>
+            `<article><h2>${question}</h2>${answersHTML({ question, grades, faces })}</article>`
+        const questionsHTML = ({ questions, grades, faces }) =>
+            questions.map((question) => questionHTML({ question, grades, faces })).join('')
+
+        const appEl = document.querySelector('main')
+
+        console.log(questionHTML({ questions, grades, faces }))
+
+        appEl.innerHTML += questionsHTML({ questions, grades, faces })
+    </script>
+</body>
+</html>
