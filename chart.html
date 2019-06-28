@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="myChart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <script>
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: "line",
+
+        // The data for our dataset
+        data: {
+          labels: [
+            "Mon","Tue","Wed","Thu","Fri",
+          ],
+          datasets: [
+            {
+              label: "Someone else",
+              data: [0, 10, 5, 2, 20,],
+              fill: false,
+              backgroundColor: 'red',
+              borderColor: 'red',
+            },
+            {
+              label: "Roman Paradeev",
+              data: [1, 1, 1, 1, 1,],
+              fill: false,
+              backgroundColor: 'green',
+              borderColor: 'green',
+            }
+          ]
+        },
+
+        // Configuration options go here
+        options: {}
+      });
+    </script>
+  </body>
+</html>
