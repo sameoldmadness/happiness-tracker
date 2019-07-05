@@ -1,8 +1,10 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import Meta from './Meta';
 import { ThemeProvider } from 'emotion-theming';
 import { Global, css } from '@emotion/core';
+
+import Meta from './Meta';
+import { Provider } from './Context';
 
 const theme = {
   color: '#393939',
@@ -20,6 +22,7 @@ const theme = {
   pink600: '#D53F8C',
   klarnaSuccessText: '#589E60',
   klarnaWarningText: '#CA8A1C',
+  background: '#f2f5f7',
 };
 
 const MainContainer = styled.div`
@@ -31,11 +34,6 @@ const Inner = styled.div`
   margin: auto;
   padding-top: 10px;
 `;
-
-// const Headline = styled.h1`
-//   color: ${props => props.theme.color};
-//   font-family: sans-serif;
-// `;
 
 export default class Page extends React.Component {
   render() {
@@ -65,10 +63,12 @@ export default class Page extends React.Component {
             }
           `}
         />
-        <MainContainer>
-          <Meta />
-          <Inner>{children}</Inner>
-        </MainContainer>
+        <Provider>
+          <MainContainer>
+            <Meta />
+            <Inner>{children}</Inner>
+          </MainContainer>
+        </Provider>
       </ThemeProvider>
     );
   }

@@ -93,6 +93,64 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./components/Context.tsx":
+/*!********************************!*\
+  !*** ./components/Context.tsx ***!
+  \********************************/
+/*! exports provided: Context, Provider, Consumer */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Context", function() { return Context; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Provider", function() { return Provider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Consumer", function() { return Consumer; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+
+var _jsxFileName = "/Users/michal.chmura/dev/happiness-tracker/client/components/Context.tsx";
+ // import Rebase from 're-base';
+// import firebase from 'firebase';
+// const app = firebase.initializeApp({
+//   apiKey: 'AIzaSyASqKTr-MABT7tZdPfVCuVUgT2Nso0g2Bg',
+//   authDomain: 'happiness-tracker-eca2c.firebaseapp.com',
+//   databaseURL: 'https://happiness-tracker-eca2c.firebaseio.com',
+//   projectId: 'happiness-tracker-eca2c',
+//   storageBucket: '',
+//   messagingSenderId: '108229354489',
+//   appId: '1:108229354489:web:2314fa49f4b54981',
+// });
+
+var Context = Object(react__WEBPACK_IMPORTED_MODULE_1__["createContext"])({});
+var Provider = function Provider(props) {
+  var children = props.children;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
+      _useState2 = Object(_babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_useState, 2),
+      votes = _useState2[0],
+      setVotes = _useState2[1]; // const rebase = Rebase.createClass(app.database());
+
+
+  var contextValue = {
+    votes: votes,
+    setVotes: setVotes // rebase,
+
+  };
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(Context.Provider, {
+    value: contextValue,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 33
+    },
+    __self: this
+  }, children);
+};
+var Consumer = Context.Consumer;
+
+
+/***/ }),
+
 /***/ "./components/Meta.tsx":
 /*!*****************************!*\
   !*** ./components/Meta.tsx ***!
@@ -165,11 +223,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @emotion/styled */ "@emotion/styled");
 /* harmony import */ var _emotion_styled__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_emotion_styled__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _Meta__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Meta */ "./components/Meta.tsx");
-/* harmony import */ var emotion_theming__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! emotion-theming */ "emotion-theming");
-/* harmony import */ var emotion_theming__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(emotion_theming__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @emotion/core */ "@emotion/core");
-/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_emotion_core__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var emotion_theming__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! emotion-theming */ "emotion-theming");
+/* harmony import */ var emotion_theming__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(emotion_theming__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @emotion/core */ "@emotion/core");
+/* harmony import */ var _emotion_core__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_emotion_core__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _Meta__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Meta */ "./components/Meta.tsx");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Context */ "./components/Context.tsx");
 
 
 
@@ -213,6 +272,7 @@ function _templateObject() {
 
 
 
+
 var theme = {
   color: '#393939',
   black: '#393939',
@@ -228,13 +288,11 @@ var theme = {
   blue100: '#EBF8FF',
   pink600: '#D53F8C',
   klarnaSuccessText: '#589E60',
-  klarnaWarningText: '#CA8A1C'
+  klarnaWarningText: '#CA8A1C',
+  background: '#f2f5f7'
 };
 var MainContainer = _emotion_styled__WEBPACK_IMPORTED_MODULE_7___default.a.div(_templateObject());
-var Inner = _emotion_styled__WEBPACK_IMPORTED_MODULE_7___default.a.div(_templateObject2()); // const Headline = styled.h1`
-//   color: ${props => props.theme.color};
-//   font-family: sans-serif;
-// `;
+var Inner = _emotion_styled__WEBPACK_IMPORTED_MODULE_7___default.a.div(_templateObject2());
 
 var Page =
 /*#__PURE__*/
@@ -251,39 +309,45 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var children = this.props.children;
-      return react__WEBPACK_IMPORTED_MODULE_6__["createElement"](emotion_theming__WEBPACK_IMPORTED_MODULE_9__["ThemeProvider"], {
+      return react__WEBPACK_IMPORTED_MODULE_6__["createElement"](emotion_theming__WEBPACK_IMPORTED_MODULE_8__["ThemeProvider"], {
         theme: theme,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 42
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_6__["createElement"](_emotion_core__WEBPACK_IMPORTED_MODULE_10__["Global"], {
-        styles: Object(_emotion_core__WEBPACK_IMPORTED_MODULE_10__["css"])(_templateObject3(), theme.white, theme.black),
+      }, react__WEBPACK_IMPORTED_MODULE_6__["createElement"](_emotion_core__WEBPACK_IMPORTED_MODULE_9__["Global"], {
+        styles: Object(_emotion_core__WEBPACK_IMPORTED_MODULE_9__["css"])(_templateObject3(), theme.white, theme.black),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45
+          lineNumber: 43
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_6__["createElement"](MainContainer, {
+      }), react__WEBPACK_IMPORTED_MODULE_6__["createElement"](_Context__WEBPACK_IMPORTED_MODULE_11__["Provider"], {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 66
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_6__["createElement"](MainContainer, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 67
+        },
+        __self: this
+      }, react__WEBPACK_IMPORTED_MODULE_6__["createElement"](_Meta__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 68
         },
         __self: this
-      }, react__WEBPACK_IMPORTED_MODULE_6__["createElement"](_Meta__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_6__["createElement"](Inner, {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 69
         },
         __self: this
-      }), react__WEBPACK_IMPORTED_MODULE_6__["createElement"](Inner, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 70
-        },
-        __self: this
-      }, children)));
+      }, children))));
     }
   }]);
 
@@ -291,6 +355,28 @@ function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
 
 
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/array/is-array */ "core-js/library/fn/array/is-array");
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js ***!
+  \*********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/get-iterator */ "core-js/library/fn/get-iterator");
 
 /***/ }),
 
@@ -461,6 +547,25 @@ function _asyncToGenerator(fn) {
 }
 
 module.exports = _asyncToGenerator;
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithHoles.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithHoles.js ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _arrayWithHoles; });
+/* harmony import */ var _core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/array/is-array */ "./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js");
+/* harmony import */ var _core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0__);
+
+function _arrayWithHoles(arr) {
+  if (_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_0___default()(arr)) return arr;
+}
 
 /***/ }),
 
@@ -725,6 +830,63 @@ function _inherits(subClass, superClass) {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArrayLimit.js":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArrayLimit.js ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _iterableToArrayLimit; });
+/* harmony import */ var _core_js_get_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../core-js/get-iterator */ "./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js");
+/* harmony import */ var _core_js_get_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_core_js_get_iterator__WEBPACK_IMPORTED_MODULE_0__);
+
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = _core_js_get_iterator__WEBPACK_IMPORTED_MODULE_0___default()(arr), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableRest.js":
+/*!****************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableRest.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _nonIterableRest; });
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js":
 /*!**************************************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js ***!
@@ -769,6 +931,28 @@ function _setPrototypeOf(o, p) {
   };
 
   return _setPrototypeOf(o, p);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _slicedToArray; });
+/* harmony import */ var _arrayWithHoles__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./arrayWithHoles */ "./node_modules/@babel/runtime-corejs2/helpers/esm/arrayWithHoles.js");
+/* harmony import */ var _iterableToArrayLimit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./iterableToArrayLimit */ "./node_modules/@babel/runtime-corejs2/helpers/esm/iterableToArrayLimit.js");
+/* harmony import */ var _nonIterableRest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nonIterableRest */ "./node_modules/@babel/runtime-corejs2/helpers/esm/nonIterableRest.js");
+
+
+
+function _slicedToArray(arr, i) {
+  return Object(_arrayWithHoles__WEBPACK_IMPORTED_MODULE_0__["default"])(arr) || Object(_iterableToArrayLimit__WEBPACK_IMPORTED_MODULE_1__["default"])(arr, i) || Object(_nonIterableRest__WEBPACK_IMPORTED_MODULE_2__["default"])();
 }
 
 /***/ }),
@@ -1420,19 +1604,19 @@ function (_App) {
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(next_app__WEBPACK_IMPORTED_MODULE_9__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25
+          lineNumber: 24
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Page__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26
+          lineNumber: 25
         },
         __self: this
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(Component, Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_2__["default"])({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27
+          lineNumber: 26
         },
         __self: this
       }))));
@@ -1449,21 +1633,20 @@ function (_App) {
             switch (_context.prev = _context.next) {
               case 0:
                 Component = _ref.Component, ctx = _ref.ctx;
-                console.log('hi');
                 pageProps = {};
 
                 if (!Component.getInitialProps) {
-                  _context.next = 7;
+                  _context.next = 6;
                   break;
                 }
 
-                _context.next = 6;
+                _context.next = 5;
                 return Component.getInitialProps(ctx);
 
-              case 6:
+              case 5:
                 pageProps = _context.sent;
 
-              case 7:
+              case 6:
                 // this exposes the query to the user
                 // @ts-ignore
                 pageProps.query = ctx.query;
@@ -1471,7 +1654,7 @@ function (_App) {
                   pageProps: pageProps
                 });
 
-              case 9:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -1525,6 +1708,28 @@ module.exports = require("@emotion/core");
 /***/ (function(module, exports) {
 
 module.exports = require("@emotion/styled");
+
+/***/ }),
+
+/***/ "core-js/library/fn/array/is-array":
+/*!****************************************************!*\
+  !*** external "core-js/library/fn/array/is-array" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/array/is-array");
+
+/***/ }),
+
+/***/ "core-js/library/fn/get-iterator":
+/*!**************************************************!*\
+  !*** external "core-js/library/fn/get-iterator" ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/get-iterator");
 
 /***/ }),
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import {
   LineChart,
   Line,
@@ -8,6 +8,8 @@ import {
   // Tooltip,
   // Legend,
 } from 'recharts';
+import firebase from '../utils/firebase';
+import { Context } from './Context';
 
 const data = [
   {
@@ -60,13 +62,48 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
-export const Chart = () => (
-  <Wrapper>
-    <LineChart width={500} height={500} data={data}>
-      <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
-      <Line type="monotone" dataKey="uv" stroke="#123644" strokeWidth={3} />
-    </LineChart>
-  </Wrapper>
-);
+export const Chart = () => {
+  // @ts-ignore
+  const context = useContext(Context);
+  // const { rebase } = context as any;
+  const [votes, setVotes] = useState([]);
+
+  const db = firebase.database();
+
+  const getVotes = async () => {
+    const votesRef = await db.ref('/happiness/2019-07-05/roman_paradeev');
+    console.log('votesRef:', votesRef);
+    votesRef.once('value', (snapshot: any) => {
+      console.log('hi');
+      console.log(snapshot);
+      setVotes(snapshot.val() || []);
+    });
+    console.log('votes:', votes);
+  };
+
+  useEffect(() => {
+    getVotes();
+    // console.log('votes:', votes);
+  }, []);
+
+  // useEffect(() => {
+  //   console.log('context2', context);
+  //   const { rebase } = context as any;
+  //   rebase.bindToState('happiness', {
+  //     context: () => {},
+  //     state: 'votes',
+  //     asArray: true,
+  //   });
+  // }, []);
+
+  return (
+    <Wrapper>
+      <LineChart width={500} height={500} data={data}>
+        <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
+        <Line type="monotone" dataKey="uv" stroke="#123644" strokeWidth={3} />
+      </LineChart>
+    </Wrapper>
+  );
+};
 
 export default Chart;

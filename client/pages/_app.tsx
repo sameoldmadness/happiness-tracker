@@ -9,7 +9,6 @@ type InitialProps = {
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }: InitialProps) {
-    console.log('hi');
     let pageProps = {};
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);

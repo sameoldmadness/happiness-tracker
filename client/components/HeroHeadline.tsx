@@ -11,20 +11,22 @@ const LogoName = styled.h1`
 const Text = styled.h2`
   font-size: 36px;
   font-weight: 700;
+  margin-top: -6rem;
   text-decoration-style: dashed;
   text-decoration-line: underline;
   text-decoration-color: ${props => props.theme.klarnaWarningText};
 `;
 
 const Wrapper = styled.div`
+  display: block;
   text-align: center;
 `;
 
-const Hero = () => (
+const HeroHeadline = () => (
   <Wrapper>
     <LogoName>Happiness Tracker</LogoName>
     <Text>Keep track who feels like 🤩 or 💩</Text>
   </Wrapper>
 );
 
-export default Hero;
+export default HeroHeadline;
