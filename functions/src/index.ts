@@ -1,31 +1,26 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
-import { sendMessage } from './services/slack'
+import { sendMessages, sendResponse } from './services/slack'
 
 admin.initializeApp();
 
-export const vote = functions.https.onRequest(async (req, res) => {
-    const { email, date, score } = req.query;
-    
-    await admin.database().ref(`/happiness/${date}/${email.replace(/[@.]/g, '')}`).push({ score: Number(score) });
-    
-    res.send('ok')
-});
-
+// export const helloWorld = functions.pubsub.schedule('5 11 * * *').onRun
 export const helloWorld = functions.https.onRequest(async (_, res) => {
-    await sendMessage(
-        'https://slack.com/api/chat.postMessage',
-        functions.config().happiness_tracker.slack_endpoint,
-        'DKUAH5V42'
-    )
+    res.send('ok');
 
-    res.send(functions.config().happiness_tracker.happiness_tracker);
+    await sendMessages()
 });
 
-// export const addMessage = functions.pubsub.schedule('5 11 * * *').onRun
-export const addMessage = functions.https.onRequest(async (req, res) => {
-    const original = req.query.text;
-    const snapshot = await admin.database().ref('/messages').push({ original });
+export const appendResponse = functions.https.onRequest(async (req, res) => {
+    const response = JSON.parse(req.body.payload)
+    const user = response.user.name.replace(/[@.]/g, '_')
+    const score = Number(response.actions[0].value)
+    const date = new Date().toISOString().split('T')[0]
+    const responseUrl = response.response_url
+
+    await admin.database().ref(`/happiness/${date}/${user}`).push({ score });
+
+    res.send('ok');
     
-    res.redirect(303, snapshot.ref.toString());
+    await sendResponse(responseUrl, 'OK, got it!')
 });
