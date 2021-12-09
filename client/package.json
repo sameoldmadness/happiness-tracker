@@ -14,7 +14,7 @@
     "emotion-theming": "^10.0.14",
     "firebase": "^6.2.4",
     "firebase-admin": "^8.2.0",
-    "next": "^8.1.1-canary.68",
+    "next": "^11.1.3",
     "next-env": "^1.1.0",
     "re-base": "^4.0.0",
     "react": "^16.8.6",
